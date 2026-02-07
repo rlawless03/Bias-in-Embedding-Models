@@ -8,7 +8,8 @@ Testing was performed on macOS Apple Silicon, through Docker.
 ## Installation
 ### Create Docker image
 Run the following command to create a Docker image in the current directory.
-Note: make sure Dockerfile has been pulled locally.
+
+Make sure Dockerfile has been pulled.
 ```
 docker build --platform=linux/amd64 -t <image-name> .
 ```
