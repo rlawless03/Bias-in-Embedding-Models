@@ -1,0 +1,10 @@
+aster
+clover
+daffodil
+iris
+lilac
+lily
+magnolia
+marigold
+poppy
+rose
