@@ -1,6 +1,7 @@
 import gensim
 import torch
 import numpy as np
+import os
 from allennlp.fairness.bias_metrics import WordEmbeddingAssociationTest
 
 # Load embeddings using GloVe
@@ -32,7 +33,12 @@ B = to_tensor(attributes_2)   # attribute group 2
 
 # Compute WEAT score 
 weat = WordEmbeddingAssociationTest()
-score = weat(X, Y, A, B)
+score = float(weat(X, Y, A, B))
 
 print("\nWEAT score:", float(score))
 
+# creating directories with file output - https://stackoverflow.com/questions/12517451/automatically-creating-directories-with-file-output
+filename = "output/weat_results.txt"
+os.makedirs(os.path.dirname(filename), exist_ok=True)
+with open(filename, "w") as f:
+    f.write("weat_score: " + str(score))
