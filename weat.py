@@ -15,7 +15,7 @@ def to_tensor(words, embeddings):
     return torch.tensor(vecs, dtype=torch.float32)
 
 def generate_weat_results(results_filename, targets1, targets2, attributes1, attributes2):
-    embedding_models = ["glove.6B.50d.txt", "glove.6B.100d.txt", "glove.6B.200d.txt", "glove.6B.300d.txt", "glove.twitter.27B.25d.txt", "glove.twitter.27B.50d.txt", "glove.twitter.27B.100d.txt", "glove.twitter.27B.200d.txt"]
+    embedding_models = ["GoogleNews-vectors-negative300.bin", "numberbatch-en-17.06.txt", "glove.6B.50d.txt", "glove.6B.100d.txt", "glove.6B.200d.txt", "glove.6B.300d.txt", "glove.twitter.27B.25d.txt", "glove.twitter.27B.50d.txt", "glove.twitter.27B.100d.txt", "glove.twitter.27B.200d.txt"]
     weat = WordEmbeddingAssociationTest()
     results_filename = "output/" + results_filename
     
@@ -25,10 +25,18 @@ def generate_weat_results(results_filename, targets1, targets2, attributes1, att
         pass
 
     for i in embedding_models:
+        no_header = True
+        is_binary = False
         print("Loading embeddings " + i)
         path = ("embeddings/" + i)
+    
+        if i == "numberbatch-en-17.06.txt" or "GoogleNews-vectors-negative300.bin":
+            no_header = False
+    
+        if i == "GoogleNews-vectors-negative300.bin":
+            is_binary = True
         embeddings = gensim.models.KeyedVectors.load_word2vec_format(
-        path, binary=False, no_header=True    
+        path, binary=is_binary, no_header=no_header    
     )
         temp_targets1 = load_words(targets1, embeddings)
         temp_targets2 = load_words(targets2, embeddings)
