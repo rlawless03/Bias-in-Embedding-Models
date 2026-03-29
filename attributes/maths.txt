@@ -1,0 +1,8 @@
+algebra
+formula
+geometry
+equation
+subtract
+variable
+add
+square
