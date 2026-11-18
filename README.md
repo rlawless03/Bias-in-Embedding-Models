@@ -6,6 +6,10 @@ The objective is to measure bias in text using Implicit Association Test methods
 
 Testing was performed on macOS Apple Silicon, through Docker.
 
+## Prerequisites
+
+- Docker Desktop installed
+
 ## Installation
 
 ### Create Docker image
@@ -15,7 +19,7 @@ Run the following command to create a Docker image in the current directory.
 Make sure Dockerfile has been pulled.
 
 ```
-docker build --platform=linux/amd64 -t <image-name> .
+docker build --platform=linux/amd64 -t <name> .
 ```
 
 ### Enter Interactive Shell
@@ -27,7 +31,7 @@ docker run -it --rm --platform linux/amd64 \
     -v <path>:/app \
     -w /app \
     --entrypoint /bin/bash  \
-    <image-name>
+    <name>
 ```
 
 ### Run file
