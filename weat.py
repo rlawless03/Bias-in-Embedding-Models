@@ -22,6 +22,7 @@ def calc_weat_pvalue(first_associations, second_associations, method): # method 
         second_associations,
         func=lambda x, y: sum(x) - sum(y),
         method=method,
+        #num_rounds=1000000,
         seed=42
     )
     return p_value
