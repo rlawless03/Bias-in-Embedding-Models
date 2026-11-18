@@ -40,7 +40,7 @@ def calc_association_scores(target_tensor, attr_tensor_A, attr_tensor_B):
     return scores
 
 def generate_weat_results(filename_input, targets1, targets2, attributes1, attributes2):
-    embedding_models = ["GoogleNews-vectors-negative300.bin"]
+    embedding_models = ["glove.6B.50d.txt"]
     weat = WordEmbeddingAssociationTest()
     results_filename = "output/" + filename_input
     # creating directories with file output - https://stackoverflow.com/questions/12517451/automatically-creating-directories-with-file-output
